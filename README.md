@@ -5,6 +5,10 @@ This repo a comprehensive data engineering environment setup using Docker Compos
 ## Project Overview
 ```
 ├── dbt/                              # Data transformation layer
+│   ├── dockerfiles/                  # Docker configurations for DBT
+│   │   └── Dockerfile.duckdb        # DuckDB-specific DBT container config
+│   │   └── Dockerfile.spark         # Spark-specific DBT container config
+│   │   └── Dockerfile.trino         # Trino-specific DBT container config
 │   ├── dbt_spark/                    # Spark-specific DBT configuration
 │   │   └── logs/                     # Spark DBT execution logs
 │   │   └── models/                   # Spark-specific data models
@@ -35,7 +39,14 @@ This repo a comprehensive data engineering environment setup using Docker Compos
 ## Directory Structure Explanation
 
 ### DBT Layer (`/dbt`)
-The DBT directory contains all data transformation logic and configurations for different data warehouses:
+The DBT directory contains all data transformation logic, Docker configurations, and engine-specific settings:
+
+- **dockerfiles/**
+  - Purpose: Contains Docker configurations for different DBT environments
+  - Key files:
+    - `Dockerfile.duckdb`: DuckDB-specific DBT container setup
+    - `Dockerfile.spark`: Spark-specific DBT container setup
+    - `Dockerfile.trino`: Trino-specific DBT container setup
 
 - **dbt_spark/**
   - Purpose: Manages Spark-specific data transformations
@@ -78,15 +89,20 @@ Contains configurations and data storage for different processing engines:
 ## Usage Guidelines
 
 1. **DBT Projects**
-   - Each DBT project is isolated by engine type
-   - Models should be placed in appropriate engine-specific directories
+   - Each DBT project has its own Docker configuration in `/dbt/dockerfiles`
+   - Models are isolated by engine type in respective directories
    - Logs are automatically generated in respective `/logs` directories
 
-2. **Engine Configuration**
+2. **Docker Configuration**
+   - Use appropriate Dockerfile from `/dbt/dockerfiles` for each environment
+   - Each DBT environment can be containerized independently
+   - Container configurations are customized for each engine's requirements
+
+3. **Engine Configuration**
    - Engine-specific settings should be maintained in respective directories
    - Data persistence is managed through mounted volumes in `data/` directories
 
-3. **Development Workflow**
+4. **Development Workflow**
    - Use docker-compose for managing the entire stack
    - Each engine can be developed and tested independently
    - DBT models can be developed in isolation for each target platform
@@ -95,13 +111,15 @@ Contains configurations and data storage for different processing engines:
 
 1. Clone the repository
 2. Navigate to the project root
-3. Run `docker-compose up` to start all services
-4. Access different engines through their respective ports
-5. Execute DBT models using appropriate project directories
+3. Choose appropriate DBT environment from `/dbt/dockerfiles`
+4. Run `docker-compose up` to start all services
+5. Access different engines through their respective ports
+6. Execute DBT models using appropriate project directories
 
 ## Notes
 
-- Each engine maintains its own data directory for persistence
-- DBT models are separated by engine to handle syntax differences
+- Each DBT environment has its own Docker configuration for isolation
+- Engine-specific DBT models are separated to handle syntax differences
 - Logs are maintained separately for each DBT project
 - Configuration files are isolated to prevent conflicts
+- Docker configurations are customized for each engine's requirementscts
