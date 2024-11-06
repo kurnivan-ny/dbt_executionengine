@@ -1,0 +1,27 @@
+FROM python:3.9-slim
+
+# Install system dependencies in a single layer
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        git \
+        ssh \
+        postgresql-client \
+        wget \
+        && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /usr/app
+
+# Copy the current directory contents into the container at /app
+COPY . /usr/app
+
+# Download JDBC driver
+RUN wget https://jdbc.postgresql.org/download/postgresql-42.2.23.jar -P /usr/lib/
+
+# Install Python packages in a single layer
+RUN pip install --no-cache-dir \
+    dbt-core \
+    dbt-spark[PyHive] \
+    psycopg2-binary \
+    pandas
+
+CMD ["bash"]

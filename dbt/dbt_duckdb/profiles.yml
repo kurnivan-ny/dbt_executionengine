@@ -1,0 +1,8 @@
+
+# dbt_projects/dbt_duckdb/profiles.yml
+dbt_duckdb:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /tmp/my_database.db

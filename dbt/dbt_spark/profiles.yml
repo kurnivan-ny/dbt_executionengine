@@ -1,0 +1,11 @@
+# dbt_projects/dbt_spark/profiles.yml
+dbt_spark:
+  target: dev
+  outputs:
+    dev:
+      type: spark
+      method: thrift
+      host: spark-master
+      port: 10000
+      schema: default
+      user: spark

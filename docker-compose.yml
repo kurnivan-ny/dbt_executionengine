@@ -1,0 +1,129 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  # Spark Services
+  spark-master:
+    image: bitnami/spark:3.5.0
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    networks:
+      - data_network
+
+  spark-worker:
+    image: bitnami/spark:3.5.0
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    depends_on:
+      - spark-master
+    networks:
+      - data_network
+
+  spark-thrift-server:
+    image: bitnami/spark:3.5.0
+    command: /opt/bitnami/spark/sbin/start-thriftserver.sh
+    environment:
+      - SPARK_MASTER_URL=spark://spark-master:7077
+    ports:
+      - "10000:10000"
+    depends_on:
+      - spark-master
+    networks:
+      - data_network
+
+  # Trino Services
+  trino-coordinator:
+    image: trinodb/trino:latest
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./engine/trino/etc:/etc/trino
+    networks:
+      - data_network
+
+  # DuckDB Service
+  duckdb:
+    build:
+        context: .
+        dockerfile: engine/duckdb/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./engine/duckdb/data:/engine/duckdb/data
+    networks:
+      - data_network
+
+  # PostgreSQL Service
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: metastore_user
+      POSTGRES_PASSWORD: metastore_password
+      POSTGRES_DB: metastore
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./engine/postgres/data:/var/lib/postgresql/data
+    networks:
+      - data_network
+
+  # DBT Services
+  dbt-spark:
+    build:
+        context: .
+        dockerfile: dbt/dockerfiles/Dockerfile.spark
+    volumes:
+        - ./dbt/dbt_spark:/usr/app/dbt/spark
+    command: tail -f /dev/null
+    depends_on:
+        - spark-thrift-server
+    networks:
+        - data_network
+
+  dbt-trino:
+      build:
+          context: .
+          dockerfile: dbt/dockerfiles/Dockerfile.trino
+      volumes:
+          - ./dbt/dbt_trino:/usr/app/dbt/trino
+      command: tail -f /dev/null
+      depends_on: 
+          - trino-coordinator
+          - postgres
+      networks:
+          - data_network
+
+  dbt-duckdb:
+      build:
+          context: .
+          dockerfile: dbt/dockerfiles/Dockerfile.duckdb
+      volumes:
+          - ./dbt/dbt_duckdb:/usr/app/dbt/duckdb
+          - ./engine/duckdb/data:/usr/app/dbt/duckdb/tmp
+      command: tail -f /dev/null
+      depends_on: 
+          - duckdb
+      networks:
+          - data_network
+
+networks:
+  data_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  duckdb_data:

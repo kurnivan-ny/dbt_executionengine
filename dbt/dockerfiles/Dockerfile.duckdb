@@ -1,0 +1,23 @@
+FROM python:3.9-slim
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    git \
+    ssh \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /usr/app
+
+# Copy the current directory contents into the container at /app
+COPY . /usr/app
+
+# Install only DuckDB adapter
+RUN pip install --no-cache-dir \
+    dbt-core \
+    dbt-duckdb \
+    pandas \
+    pyarrow  # Untuk dukungan Parquet
+
+RUN mkdir -p /usr/app/data/duckdb
+
+CMD ["bash"]

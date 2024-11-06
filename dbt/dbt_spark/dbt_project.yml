@@ -1,0 +1,5 @@
+name: 'analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'dbt_spark'  # atau 'trino' atau 'duckdb'

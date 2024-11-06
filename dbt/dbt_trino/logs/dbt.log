@@ -1,0 +1,174 @@
+[0m08:54:40.444580 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce85ff3a60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce8620f550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce8620f640>]}
+
+
+============================== 08:54:40.455054 | 165fe9a9-2321-4eb1-8688-07710fc1efd0 ==============================
+[0m08:54:40.455054 [info ] [MainThread]: Running with dbt=1.8.8
+[0m08:54:40.455699 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'version_check': 'True', 'profiles_dir': '/usr/app', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m08:54:40.481413 [info ] [MainThread]: dbt version: 1.8.8
+[0m08:54:40.481928 [info ] [MainThread]: python version: 3.9.20
+[0m08:54:40.482274 [info ] [MainThread]: python path: /usr/local/bin/python3.9
+[0m08:54:40.482809 [info ] [MainThread]: os info: Linux-5.15.153.1-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[0m08:54:40.582911 [info ] [MainThread]: Using profiles dir at /usr/app
+[0m08:54:40.583492 [info ] [MainThread]: Using profiles.yml file at /usr/app/profiles.yml
+[0m08:54:40.584081 [info ] [MainThread]: Using dbt_project.yml file at /usr/app/dbt_project.yml
+[0m08:54:40.584932 [info ] [MainThread]: adapter type: trino
+[0m08:54:40.585562 [info ] [MainThread]: adapter version: 1.8.2
+[0m08:54:40.586419 [info ] [MainThread]: Configuration:
+[0m08:54:40.587201 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m08:54:40.587779 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m08:54:40.588335 [info ] [MainThread]: Required dependencies:
+[0m08:54:40.588964 [debug] [MainThread]: Executing "git --help"
+[0m08:54:40.613090 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m08:54:40.613854 [debug] [MainThread]: STDERR: "b''"
+[0m08:54:40.614364 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m08:54:40.614849 [info ] [MainThread]: Connection:
+[0m08:54:40.615379 [info ] [MainThread]:   host: trino-coordinator
+[0m08:54:40.615804 [info ] [MainThread]:   port: 8080
+[0m08:54:40.616810 [info ] [MainThread]:   user: trino
+[0m08:54:40.617642 [info ] [MainThread]:   database: postgresql
+[0m08:54:40.618269 [info ] [MainThread]:   schema: default
+[0m08:54:40.618606 [info ] [MainThread]:   cert: None
+[0m08:54:40.619076 [info ] [MainThread]:   prepared_statements_enabled: True
+[0m08:54:40.619868 [info ] [MainThread]: Registered adapter: trino=1.8.2
+[0m08:54:40.626673 [debug] [MainThread]: Acquiring new trino connection 'debug'
+[0m08:54:40.681544 [debug] [MainThread]: Using trino connection "debug"
+[0m08:54:40.682058 [debug] [MainThread]: On debug: select 1 as id
+[0m08:54:40.682337 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m08:54:44.278058 [debug] [MainThread]: Trino adapter: Trino error: failed to execute: HTTPConnectionPool(host='trino-coordinator', port=8080): Max retries exceeded with url: /v1/statement (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fce8402e1f0>: Failed to resolve 'trino-coordinator' ([Errno -2] Name or service not known)"))
+[0m08:54:44.278765 [debug] [MainThread]: On debug: Close
+[0m08:54:44.279212 [info ] [MainThread]:   Connection test: [[31mERROR[0m]
+
+[0m08:54:44.279835 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m08:54:44.280735 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </usr/app/dbt_project.yml> not found
+
+[0m08:54:44.281331 [info ] [MainThread]: dbt was unable to connect to the specified database.
+The database returned the following error:
+
+  >Database Error
+  failed to execute: HTTPConnectionPool(host='trino-coordinator', port=8080): Max retries exceeded with url: /v1/statement (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fce8402e1f0>: Failed to resolve 'trino-coordinator' ([Errno -2] Name or service not known)"))
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m08:54:44.282693 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 3.916076, "process_user_time": 1.862098, "process_kernel_time": 0.254385, "process_mem_max_rss": "91364", "process_in_blocks": "41496", "process_out_blocks": "768", "command_success": false}
+[0m08:54:44.283505 [debug] [MainThread]: Command `dbt debug` failed at 08:54:44.283317 after 3.92 seconds
+[0m08:54:44.283899 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m08:54:44.284211 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce85ff3a60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce83fcfd00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fce840e9310>]}
+[0m08:54:44.284603 [debug] [MainThread]: Flushing usage events
+[0m08:55:23.742353 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1e6fe84a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1e6e43c760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1e6e43c7c0>]}
+
+
+============================== 08:55:23.750049 | 558e0047-48ab-46ef-90f4-352d7b7728e1 ==============================
+[0m08:55:23.750049 [info ] [MainThread]: Running with dbt=1.8.8
+[0m08:55:23.750764 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/usr/app', 'version_check': 'True', 'debug': 'False', 'log_path': '/usr/app/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m08:55:23.775777 [info ] [MainThread]: dbt version: 1.8.8
+[0m08:55:23.776263 [info ] [MainThread]: python version: 3.9.20
+[0m08:55:23.776786 [info ] [MainThread]: python path: /usr/local/bin/python3.9
+[0m08:55:23.777193 [info ] [MainThread]: os info: Linux-5.15.153.1-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[0m08:55:23.866903 [info ] [MainThread]: Using profiles dir at /usr/app
+[0m08:55:23.867431 [info ] [MainThread]: Using profiles.yml file at /usr/app/profiles.yml
+[0m08:55:23.867819 [info ] [MainThread]: Using dbt_project.yml file at /usr/app/dbt_project.yml
+[0m08:55:23.868540 [info ] [MainThread]: adapter type: trino
+[0m08:55:23.869320 [info ] [MainThread]: adapter version: 1.8.2
+[0m08:55:23.990773 [info ] [MainThread]: Configuration:
+[0m08:55:23.991310 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m08:55:23.991673 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m08:55:23.992065 [info ] [MainThread]: Required dependencies:
+[0m08:55:23.992658 [debug] [MainThread]: Executing "git --help"
+[0m08:55:24.018216 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m08:55:24.019348 [debug] [MainThread]: STDERR: "b''"
+[0m08:55:24.019784 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m08:55:24.020331 [info ] [MainThread]: Connection:
+[0m08:55:24.020931 [info ] [MainThread]:   host: trino-coordinator
+[0m08:55:24.021587 [info ] [MainThread]:   port: 8080
+[0m08:55:24.021992 [info ] [MainThread]:   user: trino
+[0m08:55:24.022691 [info ] [MainThread]:   database: postgresql
+[0m08:55:24.023606 [info ] [MainThread]:   schema: default
+[0m08:55:24.024318 [info ] [MainThread]:   cert: None
+[0m08:55:24.024847 [info ] [MainThread]:   prepared_statements_enabled: True
+[0m08:55:24.025580 [info ] [MainThread]: Registered adapter: trino=1.8.2
+[0m08:55:24.030223 [debug] [MainThread]: Acquiring new trino connection 'debug'
+[0m08:55:24.081301 [debug] [MainThread]: Using trino connection "debug"
+[0m08:55:24.081740 [debug] [MainThread]: On debug: select 1 as id
+[0m08:55:24.082002 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m08:55:28.202073 [debug] [MainThread]: Trino adapter: Trino error: failed to execute: HTTPConnectionPool(host='trino-coordinator', port=8080): Max retries exceeded with url: /v1/statement (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7f1e6dddbeb0>: Failed to resolve 'trino-coordinator' ([Errno -2] Name or service not known)"))
+[0m08:55:28.202562 [debug] [MainThread]: On debug: Close
+[0m08:55:28.202923 [info ] [MainThread]:   Connection test: [[31mERROR[0m]
+
+[0m08:55:28.203305 [info ] [MainThread]: [31m1 check failed:[0m
+[0m08:55:28.203698 [info ] [MainThread]: dbt was unable to connect to the specified database.
+The database returned the following error:
+
+  >Database Error
+  failed to execute: HTTPConnectionPool(host='trino-coordinator', port=8080): Max retries exceeded with url: /v1/statement (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7f1e6dddbeb0>: Failed to resolve 'trino-coordinator' ([Errno -2] Name or service not known)"))
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m08:55:28.207766 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 4.54722, "process_user_time": 1.873304, "process_kernel_time": 0.192393, "process_mem_max_rss": "92348", "process_in_blocks": "64392", "process_out_blocks": "32", "command_success": false}
+[0m08:55:28.208740 [debug] [MainThread]: Command `dbt debug` failed at 08:55:28.208488 after 4.55 seconds
+[0m08:55:28.209237 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m08:55:28.209682 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1e6fe84a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1e6fd39dc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1e6e2220a0>]}
+[0m08:55:28.210071 [debug] [MainThread]: Flushing usage events
+[0m09:40:54.461972 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4c6ac77a60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4c6ae92520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4c6ae92580>]}
+
+
+============================== 09:40:54.473234 | 8d461a49-b514-44c6-a4e7-b199786d5371 ==============================
+[0m09:40:54.473234 [info ] [MainThread]: Running with dbt=1.8.8
+[0m09:40:54.473897 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/usr/app', 'debug': 'False', 'warn_error': 'None', 'log_path': '/usr/app/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt debug', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m09:40:54.495979 [info ] [MainThread]: dbt version: 1.8.8
+[0m09:40:54.496433 [info ] [MainThread]: python version: 3.9.20
+[0m09:40:54.496825 [info ] [MainThread]: python path: /usr/local/bin/python3.9
+[0m09:40:54.497177 [info ] [MainThread]: os info: Linux-5.15.153.1-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[0m09:40:54.590141 [info ] [MainThread]: Using profiles dir at /usr/app
+[0m09:40:54.590656 [info ] [MainThread]: Using profiles.yml file at /usr/app/profiles.yml
+[0m09:40:54.591031 [info ] [MainThread]: Using dbt_project.yml file at /usr/app/dbt_project.yml
+[0m09:40:54.591441 [info ] [MainThread]: adapter type: trino
+[0m09:40:54.591859 [info ] [MainThread]: adapter version: 1.8.2
+[0m09:40:54.724207 [info ] [MainThread]: Configuration:
+[0m09:40:54.724714 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m09:40:54.725044 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m09:40:54.725435 [info ] [MainThread]: Required dependencies:
+[0m09:40:54.726133 [debug] [MainThread]: Executing "git --help"
+[0m09:40:54.750828 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m09:40:54.751715 [debug] [MainThread]: STDERR: "b''"
+[0m09:40:54.752049 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m09:40:54.752660 [info ] [MainThread]: Connection:
+[0m09:40:54.753524 [info ] [MainThread]:   host: trino-coordinator
+[0m09:40:54.754129 [info ] [MainThread]:   port: 8080
+[0m09:40:54.754558 [info ] [MainThread]:   user: trino
+[0m09:40:54.755071 [info ] [MainThread]:   database: postgresql
+[0m09:40:54.755521 [info ] [MainThread]:   schema: default
+[0m09:40:54.755947 [info ] [MainThread]:   cert: None
+[0m09:40:54.756709 [info ] [MainThread]:   prepared_statements_enabled: True
+[0m09:40:54.757871 [info ] [MainThread]: Registered adapter: trino=1.8.2
+[0m09:40:54.766560 [debug] [MainThread]: Acquiring new trino connection 'debug'
+[0m09:40:54.820065 [debug] [MainThread]: Using trino connection "debug"
+[0m09:40:54.820753 [debug] [MainThread]: On debug: select 1 as id
+[0m09:40:54.821080 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m09:40:58.565531 [debug] [MainThread]: Trino adapter: Trino error: failed to execute: HTTPConnectionPool(host='trino-coordinator', port=8080): Max retries exceeded with url: /v1/statement (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7f4c68bd5f70>: Failed to resolve 'trino-coordinator' ([Errno -2] Name or service not known)"))
+[0m09:40:58.566002 [debug] [MainThread]: On debug: Close
+[0m09:40:58.566418 [info ] [MainThread]:   Connection test: [[31mERROR[0m]
+
+[0m09:40:58.566908 [info ] [MainThread]: [31m1 check failed:[0m
+[0m09:40:58.567295 [info ] [MainThread]: dbt was unable to connect to the specified database.
+The database returned the following error:
+
+  >Database Error
+  failed to execute: HTTPConnectionPool(host='trino-coordinator', port=8080): Max retries exceeded with url: /v1/statement (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7f4c68bd5f70>: Failed to resolve 'trino-coordinator' ([Errno -2] Name or service not known)"))
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m09:40:58.571652 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_wall_clock_time": 4.1793323, "process_user_time": 1.905344, "process_kernel_time": 0.258514, "process_mem_max_rss": "92396", "process_in_blocks": "66872", "process_out_blocks": "760", "command_success": false}
+[0m09:40:58.572358 [debug] [MainThread]: Command `dbt debug` failed at 09:40:58.572235 after 4.18 seconds
+[0m09:40:58.572712 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m09:40:58.573025 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4c6ac77a60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4c68cb5af0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4c68bd5700>]}
+[0m09:40:58.573414 [debug] [MainThread]: Flushing usage events
